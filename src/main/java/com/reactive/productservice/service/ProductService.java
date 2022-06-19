@@ -49,6 +49,11 @@ public class ProductService {
          return productRepository.deleteById(id);
     }
 
+    public Flux<ProductDto> findInPriceRange(int min, int max){
+       return productRepository.findAllByPriceBetween(min, max)
+               .map(EntityDtoUtil::toDto);
+
+    }
 
 
 }

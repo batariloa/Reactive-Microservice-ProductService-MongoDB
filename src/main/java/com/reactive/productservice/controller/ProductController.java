@@ -29,6 +29,11 @@ public class ProductController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("pricerange")
+    public Flux<ProductDto> findByPriceRange(@RequestParam int min, @RequestParam  int max){
+        return productService.findInPriceRange(min,max);
+    }
+
     @PostMapping
     public Mono<ProductDto> insertProduct(@RequestBody Mono<ProductDto> productDto){
 
@@ -44,4 +49,8 @@ public class ProductController {
     public Mono<Void> deleteProduct(@PathVariable String id){
        return productService.deleteProduct(id);
     }
+
+
+
+
 }
