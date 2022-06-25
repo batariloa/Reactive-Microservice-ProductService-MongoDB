@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Sinks;
 
 @Service
 public class ProductService {
+
+    @Autowired
+    private Sinks.Many<ProductDto> sink;
 
     @Autowired
     private ProductRepository productRepository;
@@ -30,7 +34,8 @@ public class ProductService {
 
         return dto.map(EntityDtoUtil::toEntity)
                 .flatMap(productRepository::insert)
-                .map(EntityDtoUtil::toDto);
+                .map(EntityDtoUtil::toDto)
+                .doOnNext(sink::tryEmitNext);
 
     }
 
