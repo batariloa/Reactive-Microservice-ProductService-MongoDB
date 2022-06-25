@@ -18,6 +18,13 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.batarilo</groupId>
+            <artifactId>dto</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/dto.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>

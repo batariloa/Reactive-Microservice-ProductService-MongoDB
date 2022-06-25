@@ -1,14 +1,14 @@
 package com.reactive.productservice.controller;
 
-import com.reactive.productservice.dto.ProductDto;
-import com.reactive.productservice.entity.Product;
 import com.reactive.productservice.service.ProductService;
-import com.reactive.productservice.util.EntityDtoUtil;
+import dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 @RequestMapping("/product")
@@ -24,6 +24,8 @@ public class ProductController {
 
     @GetMapping("{id}")
     public Mono<ResponseEntity<ProductDto>> getById(@PathVariable String id){
+
+
         return productService.getProductById(id)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
@@ -52,5 +54,12 @@ public class ProductController {
 
 
 
+    private void simulateRandomException(){
+       int nextInt = ThreadLocalRandom.current().nextInt(1,10);
+        if(nextInt>5)
+            throw new RuntimeException("something is wrong");
+
+
+    }
 
 }

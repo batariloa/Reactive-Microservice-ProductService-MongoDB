@@ -1,8 +1,8 @@
 package com.reactive.productservice.service;
 
-import com.reactive.productservice.dto.ProductDto;
 import com.reactive.productservice.repository.ProductRepository;
 import com.reactive.productservice.util.EntityDtoUtil;
+import dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -40,7 +40,7 @@ public class ProductService {
     }
 
 
-    public Mono<ProductDto> updateProduct(String id,Mono<ProductDto> dto){
+    public Mono<ProductDto> updateProduct(String id, Mono<ProductDto> dto){
 
        return productRepository.findById(id)
                .flatMap(p-> dto

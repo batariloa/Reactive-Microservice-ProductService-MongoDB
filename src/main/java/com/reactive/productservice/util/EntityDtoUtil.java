@@ -1,7 +1,7 @@
 package com.reactive.productservice.util;
 
-import com.reactive.productservice.dto.ProductDto;
 import com.reactive.productservice.entity.Product;
+import dto.ProductDto;
 
 public class EntityDtoUtil {
 

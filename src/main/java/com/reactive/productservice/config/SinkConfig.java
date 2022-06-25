@@ -1,6 +1,6 @@
 package com.reactive.productservice.config;
 
-import com.reactive.productservice.dto.ProductDto;
+import dto.ProductDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import reactor.core.publisher.Flux;

@@ -1,6 +1,6 @@
 package com.reactive.productservice.service;
 
-import com.reactive.productservice.dto.ProductDto;
+import dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
